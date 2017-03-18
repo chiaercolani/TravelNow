@@ -34,12 +34,15 @@ import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,6 +65,8 @@ public class CalendarActivity extends Activity
     private static final String BUTTON_TEXT = "Call Google Calendar API";
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
+
+    private ListView cal_view;
 
     /**
     * Create the main activity.
@@ -109,7 +114,17 @@ public class CalendarActivity extends Activity
 //    mProgress.setMessage("Calling Google Calendar API ...");
 
     //setContentView(activityLayout);
+        Event event = new Event();
+        event.setDescription("test1");
+        Event event2 = new Event();
+        event2.setDescription("test2");
 
+        final List<Event> eventList = Arrays.asList(event, event2);//new ArrayList<>();
+
+        cal_view = (ListView) findViewById(R.id.list_cal);
+
+        CalAdapter adapter = new CalAdapter(this , eventList,cal_view);
+        cal_view.setAdapter(adapter);
     final Button button_cal = (Button) findViewById(R.id.btn_calendar);
 //        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
     button_cal.setOnClickListener(new View.OnClickListener() {
