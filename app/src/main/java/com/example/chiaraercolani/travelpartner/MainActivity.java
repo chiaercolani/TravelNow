@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new HTTPRequest().execute("Lausanne", "Geneve", "18-03-2017", "15:00");
+        //new HTTPRequest().execute("Lausanne", "Geneve", "18-03-2017", "15:00");
     }
 
     public void buttonClicked(View view){

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.api.client.util.Lists;
 import com.google.api.services.calendar.model.Event;
 
 import java.util.ArrayList;
@@ -59,11 +60,14 @@ public class CalAdapter extends BaseAdapter {
         Event event = (Event) getItem(position);
 
 // 2
-        titleTextView.setText(event.getDescription());
-
+        titleTextView.setText(event.getSummary());
 
         return rowView;
     }
 
+    public void addItems(List<Event> events){
+        mDataSource.clear();
+        mDataSource.addAll(events);
+    }
 
 }

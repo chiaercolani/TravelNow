@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,9 +54,9 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class CalendarActivity extends Activity
     implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
-    private TextView mOutputText;
-    private Button mCallApiButton;
-    ProgressDialog mProgress;
+//    private TextView mOutputText;
+//    private Button mCallApiButton;
+//    ProgressDialog mProgress;
 
     static final int REQUEST_ACCOUNT_PICKER = 1000;
     static final int REQUEST_AUTHORIZATION = 1001;
@@ -68,7 +69,7 @@ public class CalendarActivity extends Activity
 
     private CalAdapter adapter;
     private List<Event> eventList;
-
+    private Runnable run;
     /**
     * Create the main activity.
     * @param savedInstanceState previously saved instance data.
@@ -77,73 +78,53 @@ public class CalendarActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-//    LinearLayout activityLayout = new LinearLayout(this);
-//    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-//            LinearLayout.LayoutParams.MATCH_PARENT,
-//            LinearLayout.LayoutParams.MATCH_PARENT);
-//    activityLayout.setLayoutParams(lp);
-//    activityLayout.setOrientation(LinearLayout.VERTICAL);
-//    activityLayout.setPadding(16, 16, 16, 16);
-//
-//    ViewGroup.LayoutParams tlp = new ViewGroup.LayoutParams(
-//            ViewGroup.LayoutParams.WRAP_CONTENT,
-//            ViewGroup.LayoutParams.WRAP_CONTENT);
-//
-//    mCallApiButton = new Button(this);
-//    mCallApiButton.setText(BUTTON_TEXT);
-//    mCallApiButton.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            mCallApiButton.setEnabled(false);
-//            mOutputText.setText("");
-//            getResultsFromApi();
-//            mCallApiButton.setEnabled(true);
-//        }
-//    });
-//    activityLayout.addView(mCallApiButton);
-//
-//    mOutputText = new TextView(this);
-//    mOutputText.setLayoutParams(tlp);
-//    mOutputText.setPadding(16, 16, 16, 16);
-//    mOutputText.setVerticalScrollBarEnabled(true);
-//    mOutputText.setMovementMethod(new ScrollingMovementMethod());
-//    mOutputText.setText(
-//            "Click the \'" + BUTTON_TEXT +"\' button to test the API.");
-//    activityLayout.addView(mOutputText);
-//
-//    mProgress = new ProgressDialog(this);
-//    mProgress.setMessage("Calling Google Calendar API ...");
-
-    //setContentView(activityLayout);
 
         eventList = new ArrayList<>();
 
-        ListView cal_view = (ListView) findViewById(R.id.list_cal);
+        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
 
         adapter = new CalAdapter(getApplicationContext() , eventList,cal_view);
         cal_view.setAdapter(adapter);
     final Button button_cal = (Button) findViewById(R.id.btn_calendar);
-//        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
+
     button_cal.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             button_cal.setEnabled(false);
-            //mOutputText.setText("");
+
             getResultsFromApi();
-//            Event event3 = new Event();
-//            event3.setDescription("test2");
-//            eventList.add(event3);
 //            adapter.notifyDataSetChanged();
             button_cal.setEnabled(true);
         }
     });
+
+    run = new Runnable() {
+        @Override
+        public void run() {
+            adapter.notifyDataSetChanged();
+            cal_view.invalidateViews();
+            cal_view.refreshDrawableState();
+        }
+    };
 
     // Initialize credentials and service object.
     mCredential = GoogleAccountCredential.usingOAuth2(
             getApplicationContext(), Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
 
+    final CalendarView calendarView = (CalendarView) findViewById(R.id.cal_view_id);
+    calendarView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            calendarView.getDate();
+            getResultsFromApi();
+
+        }
+    });
+
+        getResultsFromApi();
     }
+
 
 
 
@@ -160,7 +141,7 @@ public class CalendarActivity extends Activity
     } else if (mCredential.getSelectedAccountName() == null) {
         chooseAccount();
     } else if (! isDeviceOnline()) {
-        mOutputText.setText("No network connection available.");
+//        mOutputText.setText("No network connection available.");
     } else {
         new MakeRequestTask(mCredential).execute();
     }
@@ -218,9 +199,6 @@ public class CalendarActivity extends Activity
     switch(requestCode) {
         case REQUEST_GOOGLE_PLAY_SERVICES:
             if (resultCode != RESULT_OK) {
-                mOutputText.setText(
-                        "This app requires Google Play Services. Please install " +
-                                "Google Play Services on your device and relaunch this app.");
             } else {
                 getResultsFromApi();
             }
@@ -395,21 +373,9 @@ public class CalendarActivity extends Activity
         List<Event> items = events.getItems();
 
 
-        for (Event event : items) {
-            DateTime start = event.getStart().getDateTime();
-            if (start == null) {
-                // All-day events don't have start times, so just use
-                // the start date.
-                start = event.getStart().getDate();
-            }
-//            TextView textView = new TextView(CalendarActivity.this);
-//            textView.append(String.format("%s (%s)", event.getSummary(), start));
-//            cal_view.addView(textView);
-            eventList.add(event);
-//            eventStrings.add(
-//                    String.format("%s (%s)", event.getSummary(), start));
-        }
-        adapter.notifyDataSetChanged();
+        adapter.addItems(items);
+
+        runOnUiThread(run);
 
 
         return eventStrings;
@@ -419,24 +385,14 @@ public class CalendarActivity extends Activity
 
     @Override
     protected void onPreExecute() {
-        mOutputText.setText("");
-        mProgress.show();
     }
 
     @Override
     protected void onPostExecute(List<String> output) {
-        mProgress.hide();
-        if (output == null || output.size() == 0) {
-            mOutputText.setText("No results returned.");
-        } else {
-            output.add(0, "Data retrieved using the Google Calendar API:");
-            mOutputText.setText(TextUtils.join("\n", output));
-        }
     }
 
     @Override
     protected void onCancelled() {
-        mProgress.hide();
         if (mLastError != null) {
             if (mLastError instanceof GooglePlayServicesAvailabilityIOException) {
                 showGooglePlayServicesAvailabilityErrorDialog(
@@ -446,12 +402,7 @@ public class CalendarActivity extends Activity
                 startActivityForResult(
                         ((UserRecoverableAuthIOException) mLastError).getIntent(),
                         CalendarActivity.REQUEST_AUTHORIZATION);
-            } else {
-                mOutputText.setText("The following error occurred:\n"
-                        + mLastError.getMessage());
             }
-        } else {
-            mOutputText.setText("Request cancelled.");
         }
     }
     }
