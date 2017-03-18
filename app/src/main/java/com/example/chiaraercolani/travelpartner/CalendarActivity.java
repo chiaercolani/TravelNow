@@ -66,7 +66,8 @@ public class CalendarActivity extends Activity
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
 
-    private ListView cal_view;
+    private CalAdapter adapter;
+    private List<Event> eventList;
 
     /**
     * Create the main activity.
@@ -114,16 +115,12 @@ public class CalendarActivity extends Activity
 //    mProgress.setMessage("Calling Google Calendar API ...");
 
     //setContentView(activityLayout);
-        Event event = new Event();
-        event.setDescription("test1");
-        Event event2 = new Event();
-        event2.setDescription("test2");
 
-        final List<Event> eventList = Arrays.asList(event, event2);//new ArrayList<>();
+        eventList = new ArrayList<>();
 
-        cal_view = (ListView) findViewById(R.id.list_cal);
+        ListView cal_view = (ListView) findViewById(R.id.list_cal);
 
-        CalAdapter adapter = new CalAdapter(this , eventList,cal_view);
+        adapter = new CalAdapter(getApplicationContext() , eventList,cal_view);
         cal_view.setAdapter(adapter);
     final Button button_cal = (Button) findViewById(R.id.btn_calendar);
 //        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
@@ -133,7 +130,10 @@ public class CalendarActivity extends Activity
             button_cal.setEnabled(false);
             //mOutputText.setText("");
             getResultsFromApi();
-
+//            Event event3 = new Event();
+//            event3.setDescription("test2");
+//            eventList.add(event3);
+//            adapter.notifyDataSetChanged();
             button_cal.setEnabled(true);
         }
     });
@@ -393,7 +393,7 @@ public class CalendarActivity extends Activity
                 .setSingleEvents(true)
                 .execute();
         List<Event> items = events.getItems();
-        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
+
 
         for (Event event : items) {
             DateTime start = event.getStart().getDateTime();
@@ -405,10 +405,13 @@ public class CalendarActivity extends Activity
 //            TextView textView = new TextView(CalendarActivity.this);
 //            textView.append(String.format("%s (%s)", event.getSummary(), start));
 //            cal_view.addView(textView);
-
+            eventList.add(event);
 //            eventStrings.add(
 //                    String.format("%s (%s)", event.getSummary(), start));
         }
+        adapter.notifyDataSetChanged();
+
+
         return eventStrings;
     }
 
