@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -69,39 +70,64 @@ public class CalendarActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    LinearLayout activityLayout = new LinearLayout(this);
-    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT);
-    activityLayout.setLayoutParams(lp);
-    activityLayout.setOrientation(LinearLayout.VERTICAL);
-    activityLayout.setPadding(16, 16, 16, 16);
+        setContentView(R.layout.activity_calendar);
+//    LinearLayout activityLayout = new LinearLayout(this);
+//    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+//            LinearLayout.LayoutParams.MATCH_PARENT,
+//            LinearLayout.LayoutParams.MATCH_PARENT);
+//    activityLayout.setLayoutParams(lp);
+//    activityLayout.setOrientation(LinearLayout.VERTICAL);
+//    activityLayout.setPadding(16, 16, 16, 16);
+//
+//    ViewGroup.LayoutParams tlp = new ViewGroup.LayoutParams(
+//            ViewGroup.LayoutParams.WRAP_CONTENT,
+//            ViewGroup.LayoutParams.WRAP_CONTENT);
+//
+//    mCallApiButton = new Button(this);
+//    mCallApiButton.setText(BUTTON_TEXT);
+//    mCallApiButton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            mCallApiButton.setEnabled(false);
+//            mOutputText.setText("");
+//            getResultsFromApi();
+//            mCallApiButton.setEnabled(true);
+//        }
+//    });
+//    activityLayout.addView(mCallApiButton);
+//
+//    mOutputText = new TextView(this);
+//    mOutputText.setLayoutParams(tlp);
+//    mOutputText.setPadding(16, 16, 16, 16);
+//    mOutputText.setVerticalScrollBarEnabled(true);
+//    mOutputText.setMovementMethod(new ScrollingMovementMethod());
+//    mOutputText.setText(
+//            "Click the \'" + BUTTON_TEXT +"\' button to test the API.");
+//    activityLayout.addView(mOutputText);
+//
+//    mProgress = new ProgressDialog(this);
+//    mProgress.setMessage("Calling Google Calendar API ...");
 
-    ViewGroup.LayoutParams tlp = new ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT);
-        
+    //setContentView(activityLayout);
+
+    final Button button_cal = (Button) findViewById(R.id.btn_calendar);
+//        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
+    button_cal.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            button_cal.setEnabled(false);
+            //mOutputText.setText("");
             getResultsFromApi();
 
-
-    mOutputText = new TextView(this);
-    mOutputText.setLayoutParams(tlp);
-    mOutputText.setPadding(16, 16, 16, 16);
-    mOutputText.setVerticalScrollBarEnabled(true);
-    mOutputText.setMovementMethod(new ScrollingMovementMethod());
-    mOutputText.setText(
-            "Click the \'" + BUTTON_TEXT +"\' button to test the API.");
-    activityLayout.addView(mOutputText);
-
-    mProgress = new ProgressDialog(this);
-    mProgress.setMessage("Calling Google Calendar API ...");
-
-    setContentView(activityLayout);
+            button_cal.setEnabled(true);
+        }
+    });
 
     // Initialize credentials and service object.
     mCredential = GoogleAccountCredential.usingOAuth2(
             getApplicationContext(), Arrays.asList(SCOPES))
             .setBackOff(new ExponentialBackOff());
+
     }
 
 
@@ -352,6 +378,7 @@ public class CalendarActivity extends Activity
                 .setSingleEvents(true)
                 .execute();
         List<Event> items = events.getItems();
+        final ListView cal_view = (ListView) findViewById(R.id.list_cal);
 
         for (Event event : items) {
             DateTime start = event.getStart().getDateTime();
@@ -360,11 +387,16 @@ public class CalendarActivity extends Activity
                 // the start date.
                 start = event.getStart().getDate();
             }
-            eventStrings.add(
-                    String.format("%s (%s)", event.getSummary(), start));
+//            TextView textView = new TextView(CalendarActivity.this);
+//            textView.append(String.format("%s (%s)", event.getSummary(), start));
+//            cal_view.addView(textView);
+
+//            eventStrings.add(
+//                    String.format("%s (%s)", event.getSummary(), start));
         }
         return eventStrings;
     }
+
 
 
     @Override
