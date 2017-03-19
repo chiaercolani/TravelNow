@@ -31,6 +31,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +45,8 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.Calendar;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -54,9 +54,6 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class CalendarActivity extends Activity
     implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
-//    private TextView mOutputText;
-//    private Button mCallApiButton;
-//    ProgressDialog mProgress;
 
     static final int REQUEST_ACCOUNT_PICKER = 1000;
     static final int REQUEST_AUTHORIZATION = 1001;
@@ -70,6 +67,8 @@ public class CalendarActivity extends Activity
     private CalAdapter adapter;
     private List<Event> eventList;
     private Runnable run;
+    public static DateTime date;
+    public static DateTime tomorrow;
     /**
     * Create the main activity.
     * @param savedInstanceState previously saved instance data.
@@ -113,13 +112,31 @@ public class CalendarActivity extends Activity
             .setBackOff(new ExponentialBackOff());
 
     final CalendarView calendarView = (CalendarView) findViewById(R.id.cal_view_id);
-    calendarView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            calendarView.getDate();
-            getResultsFromApi();
 
-        }
+    calendarView.setOnDateChangeListener( new CalendarView.OnDateChangeListener() {
+        public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+            CalendarActivity.date = new DateTime(new Date(year-1900, month, dayOfMonth).getTime());
+            if ((month == 1) && (dayOfMonth >= 28)) {
+                dayOfMonth = 1;
+                month++;
+            } else if((month == 0 || month == 2
+                    || month == 4 || month == 6
+                    || month == 7 || month == 9) && dayOfMonth == 31){
+                dayOfMonth = 1;
+                month++;
+            } else if (month == 11 && dayOfMonth == 31){
+                dayOfMonth = 1;
+                month = 0;
+                year++;
+            } else if ((month == 3 || month == 5 || month == 8 || month == 10) && dayOfMonth == 30) {
+                dayOfMonth = 1;
+                month++;
+            } else {
+                dayOfMonth++;
+            }
+            CalendarActivity.tomorrow = new DateTime(new Date(year-1900, month, dayOfMonth).getTime());
+            getResultsFromApi();
+        }//met
     });
 
         getResultsFromApi();
@@ -362,11 +379,16 @@ public class CalendarActivity extends Activity
      */
     private List<String> getDataFromApi() throws IOException {
         // List the next 10 events from the primary calendar.
-        DateTime now = new DateTime(System.currentTimeMillis());
+        if(CalendarActivity.date == null) {
+            CalendarActivity.date = new DateTime(System.currentTimeMillis() );
+            CalendarActivity.tomorrow = new DateTime((System.currentTimeMillis() + 1000*3600*24));
+        }
         List<String> eventStrings = new ArrayList<String>();
+
+
         Events events = mService.events().list("primary")
-                .setMaxResults(10)
-                .setTimeMin(now)
+                .setTimeMin(CalendarActivity.date)
+                .setTimeMax(CalendarActivity.tomorrow)
                 .setOrderBy("startTime")
                 .setSingleEvents(true)
                 .execute();
