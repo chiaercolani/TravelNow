@@ -1,28 +1,22 @@
 package com.example.chiaraercolani.travelpartner;
 
-import android.os.AsyncTask;
-import android.util.Log;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
+        import android.os.AsyncTask;
+        import android.util.Log;
+
+        import java.io.BufferedInputStream;
+        import java.io.IOException;
+        import java.io.InputStream;
+        import java.net.HttpURLConnection;
+        import java.net.MalformedURLException;
+        import java.net.URL;
+        import java.util.List;
 
 /**
- * Created by chiaraercolani on 18/03/17.
+ * Created by martin on 18/03/17.
  */
 
-public class HTTPRequest extends AsyncTask<String, Void, Boolean> {
-
-    @Override
-    protected Boolean doInBackground(String... params) {
-        doPathRequest(params[0], params[1], params[2], params[3]);
-
-        return new Boolean(true);
-    }
+public class HTTPRequest {
 
     private void request(String urlString){
         try {
@@ -58,10 +52,7 @@ public class HTTPRequest extends AsyncTask<String, Void, Boolean> {
         String toReturn="";
         try {
             URL url = new URL(m.toStringRequest());
-            Log.v("MY APP", "Request : " + m.toStringRequest());
-
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-
 
             try {
                 InputStream is = new BufferedInputStream(urlConnection.getInputStream());
@@ -95,10 +86,18 @@ public class HTTPRequest extends AsyncTask<String, Void, Boolean> {
         List<Location> list = Location.locationList(doRequest(sr));
     }
 
-    public void doPathRequest(String from, String to, String date, String time){
+    public String doPointOfInterest(String interestName){
+        InterestPointRequest ir = new InterestPointRequest(interestName);
+        return doRequest(ir);
+    }
+
+    public List<Connection> doPathRequest(String from, String to, String date, String time){
         PathRequest pr = new PathRequest(from, to, date, time);
         List<Connection> list = Connection.connectionList(doRequest(pr));
-        Log.v("MY APP", doRequest(pr));
+        if(list.size() > 0)
+            Log.v("MY APP", ""+list.get(0).getScore());
+
+        return list;
     }
 
     private class Message {
@@ -123,7 +122,14 @@ public class HTTPRequest extends AsyncTask<String, Void, Boolean> {
     private class StationRequest extends LocationRequest {
         public StationRequest(String name) {
             super();
-            super.str += "?query="+name;
+            super.str += "?query="+name+"&type=station";
+        }
+    }
+
+    private class InterestPointRequest extends LocationRequest {
+        public InterestPointRequest(String name) {
+            super();
+            super.str += "?query="+name+"&type=poi";
         }
     }
 

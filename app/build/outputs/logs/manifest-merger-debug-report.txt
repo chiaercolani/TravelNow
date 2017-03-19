@@ -1,0 +1,140 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:2:1-29:12
+	package
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:3:5-55
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.READ_CALENDAR
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:5:5-72
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:5:22-69
+uses-permission#android.permission.WRITE_CALENDAR
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:6:5-73
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:6:22-70
+uses-permission#android.permission.INTERNET
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:9:5-71
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:9:22-68
+application
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:11:5-27:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/chiaraercolani/.android/build-cache/dff49cd7c5275615e1d661ddb4cd36124a445d66/output/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-base:10.0.1] /Users/chiaraercolani/.android/build-cache/fbb41645274dba37912e240e3d8ca25a4fc77acd/output/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/chiaraercolani/.android/build-cache/08254a80119fee361b47a93342e237803bb0a69c/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/chiaraercolani/.android/build-cache/f610973bd70c34dc65255cb2668b6d0a54b73be4/output/AndroidManifest.xml:19:5-21:19
+MERGED from [pub.devrel:easypermissions:0.2.1] /Users/chiaraercolani/.android/build-cache/006e0b4e0f0b4d18eb72a63575171065523cf797/output/AndroidManifest.xml:12:5-20
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.1] /Users/chiaraercolani/.android/build-cache/2066268cf796212e8b720ad6ccbb48c570e95916/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/chiaraercolani/.android/build-cache/7706263dbe1956c1a131afb88d2ea1752c14f9a4/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/chiaraercolani/.android/build-cache/49fad97764e3207953af7e64566d93263ff5dbd2/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/chiaraercolani/.android/build-cache/b68a2fc2547e725519c74ded0111737302189193/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] /Users/chiaraercolani/.android/build-cache/7d03753489a8fd61b9c1d4bbc0c35dca2e65dfef/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/chiaraercolani/.android/build-cache/5290230baa313a611ef488d655837949a8741108/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/chiaraercolani/.android/build-cache/cc9fcd1e074c466f71c11a68b28f197ad3f536e1/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:25.0.1] /Users/chiaraercolani/.android/build-cache/df1aedfd0ba2b2ba29df8f891f5f552b8e9738ec/output/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:14:9-41
+	android:supportsRtl
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:16:9-35
+	android:roundIcon
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:15:9-54
+	android:allowBackup
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:13:9-43
+	android:theme
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:17:9-40
+activity#com.example.chiaraercolani.travelpartner.MainActivity
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:19:9-25:20
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:19:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:20:13-24:29
+action#android.intent.action.MAIN
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:23:27-74
+activity#com.example.chiaraercolani.travelpartner.CalendarActivity
+ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:26:9-63
+	android:name
+		ADDED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml:26:19-51
+uses-sdk
+INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/chiaraercolani/.android/build-cache/dff49cd7c5275615e1d661ddb4cd36124a445d66/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-auth-base:10.0.1] /Users/chiaraercolani/.android/build-cache/74fa80f878781bd17d4958a96a763a539ba4a01e/output/AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-base:10.0.1] /Users/chiaraercolani/.android/build-cache/fbb41645274dba37912e240e3d8ca25a4fc77acd/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/chiaraercolani/.android/build-cache/08254a80119fee361b47a93342e237803bb0a69c/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/chiaraercolani/.android/build-cache/f610973bd70c34dc65255cb2668b6d0a54b73be4/output/AndroidManifest.xml:17:5-42
+MERGED from [pub.devrel:easypermissions:0.2.1] /Users/chiaraercolani/.android/build-cache/006e0b4e0f0b4d18eb72a63575171065523cf797/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.0.1] /Users/chiaraercolani/.android/build-cache/2066268cf796212e8b720ad6ccbb48c570e95916/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/chiaraercolani/.android/build-cache/7706263dbe1956c1a131afb88d2ea1752c14f9a4/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/chiaraercolani/.android/build-cache/49fad97764e3207953af7e64566d93263ff5dbd2/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/chiaraercolani/.android/build-cache/b68a2fc2547e725519c74ded0111737302189193/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.1] /Users/chiaraercolani/.android/build-cache/7d03753489a8fd61b9c1d4bbc0c35dca2e65dfef/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/chiaraercolani/.android/build-cache/5290230baa313a611ef488d655837949a8741108/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/chiaraercolani/.android/build-cache/cc9fcd1e074c466f71c11a68b28f197ad3f536e1/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:25.0.1] /Users/chiaraercolani/.android/build-cache/df1aedfd0ba2b2ba29df8f891f5f552b8e9738ec/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.0.1] /Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/src/main/AndroidManifest.xml
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:20:9-189
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:20:129-162
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:20:163-187
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:20:69-128
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:20:19-68
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:24:9-184
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:24:64-87
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:24:88-182
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/chiaraercolani/.android/build-cache/c4c8306ca8933d8bfde0984bb939a8789d4c300d/output/AndroidManifest.xml:24:18-63
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/chiaraercolani/.android/build-cache/fbb41645274dba37912e240e3d8ca25a4fc77acd/output/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/chiaraercolani/.android/build-cache/fbb41645274dba37912e240e3d8ca25a4fc77acd/output/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/chiaraercolani/.android/build-cache/fbb41645274dba37912e240e3d8ca25a4fc77acd/output/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/chiaraercolani/.android/build-cache/fbb41645274dba37912e240e3d8ca25a4fc77acd/output/AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/chiaraercolani/.android/build-cache/f610973bd70c34dc65255cb2668b6d0a54b73be4/output/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/chiaraercolani/.android/build-cache/f610973bd70c34dc65255cb2668b6d0a54b73be4/output/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/chiaraercolani/.android/build-cache/f610973bd70c34dc65255cb2668b6d0a54b73be4/output/AndroidManifest.xml:20:20-65

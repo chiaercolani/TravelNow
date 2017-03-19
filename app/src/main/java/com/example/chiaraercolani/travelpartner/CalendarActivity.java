@@ -45,6 +45,9 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Calendar;
 
@@ -382,8 +385,64 @@ public class CalendarActivity extends Activity
                 .execute();
         List<Event> items = events.getItems();
 
+        List<Event> items_train = new LinkedList<>();
 
-        adapter.addItems(items);
+        if(items.size() != 0) {
+            items_train.add(items.get(0));
+            for(int i = 1; i < items.size(); i++) {
+                Event e = items.get(i);
+                Event pe = items.get(i-1);
+
+                EventDateTime edt = pe.getEnd();
+                DateTime dt = edt.getDateTime();
+                String departure = dt.toStringRfc3339();
+                String departure_day = departure.substring(0,10);
+                String departure_h = pe.getStart().getDateTime().toStringRfc3339().substring(11, 16);
+
+                edt = e.getStart();
+                dt = edt.getDateTime();
+                String arrival = dt.toStringRfc3339();
+                String arrival_day = e.getStart().getDateTime().toStringRfc3339().substring(0,10);
+                String arrival_h = e.getStart().getDateTime().toStringRfc3339().substring(11, 16);
+
+
+                ConstraintSolver cs = new ConstraintSolver(pe.getLocation(), departure_day, departure_h, e.getLocation(), arrival_day, arrival_h);
+                Connection c = cs.getConnection();
+
+                if(c != null) {
+                    for(int j = 0; j < c.sections.size(); j+=2){
+                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+
+                        Checkpoint depart_chk = c.sections.get(j).departure;
+                        Checkpoint arrival_chk = c.sections.get(j).arrival;
+
+                        Event tr_e = new Event();
+                        tr_e.setSummary("Train proposal.");
+                        tr_e.setLocation(depart_chk.station.toString() + "->" + arrival_chk.station.toString());
+                        try {
+                            String dep = depart_chk.departure;
+                            Date start_date = df.parse(dep);
+                            DateTime start_dt = new DateTime(start_date);
+                            EventDateTime startDate = new EventDateTime().setDateTime(start_dt);
+                            tr_e.setStart(startDate);
+
+                            String arr = arrival_chk.arrival;
+                            Date end_date = df.parse(arr);
+                            DateTime end_dt = new DateTime(end_date);
+                            EventDateTime endDate = new EventDateTime().setDateTime(end_dt);
+                            tr_e.setEnd(endDate);
+
+                            items_train.add(tr_e);
+                        } catch (ParseException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                }
+                items_train.add(items.get(i));
+            }
+        }
+
+        adapter.addItems(items_train);
 
         runOnUiThread(run);
 

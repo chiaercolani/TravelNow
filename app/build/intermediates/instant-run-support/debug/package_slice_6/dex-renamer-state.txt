@@ -1,0 +1,4 @@
+#Sun Mar 19 08:23:24 CET 2017
+base.0=/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6
+renamed.0=classes.dex
+file.0=/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex

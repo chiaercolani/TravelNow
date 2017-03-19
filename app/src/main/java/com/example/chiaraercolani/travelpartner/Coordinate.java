@@ -4,12 +4,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by chiaraercolani on 18/03/17.
+ * Created by martin on 18/03/17.
  */
 
 public class Coordinate {
     double longitude;
     double latitude;
+
+    public Coordinate(double latitude, double longitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 
     public Coordinate(String json_string){
         try {

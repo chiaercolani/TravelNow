@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/chiaraercolani/.android/build-cache/055ab200e1ceff30ce8f66722f48fe0ecfb6db36/output/res/drawable-v21/abc_edit_text_material.xml"
+    }
+]

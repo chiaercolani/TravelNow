@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by chiaraercolani on 18/03/17.
+ * Created by martin on 18/03/17.
  */
 
 public class Checkpoint {
@@ -12,6 +12,13 @@ public class Checkpoint {
     String arrival;
     String departure;
     int platform;
+
+    public Checkpoint(Location station, String arrival, String departure, int platform) {
+        this.station = station;
+        this.arrival = arrival;
+        this.departure = departure;
+        this.platform = platform;
+    }
 
     public Checkpoint(String json_string){
         try{

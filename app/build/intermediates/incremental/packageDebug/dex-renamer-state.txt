@@ -1,0 +1,7 @@
+#Sun Mar 19 05:40:26 CET 2017
+base.0=/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0dbc956fdb267296e01023e8d1744b4fe95b6b33
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_80f95f8939d3c050252e0f2c5dca19637a4d1e9e/classes.dex
+base.1=/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_80f95f8939d3c050252e0f2c5dca19637a4d1e9e
+file.0=/Users/chiaraercolani/AndroidStudioProjects/TravelPartner/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_0dbc956fdb267296e01023e8d1744b4fe95b6b33/classes.dex
