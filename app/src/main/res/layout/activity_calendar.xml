@@ -13,12 +13,6 @@
         android:id="@+id/cal_view_id">
     </CalendarView>
 
-    <Button
-        android:id="@+id/btn_calendar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_calendar_text" />
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

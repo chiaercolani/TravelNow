@@ -9,4 +9,23 @@
         android:id="@+id/cal_list_item"
         android:text=""/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cal_list_location"
+        android:text="N/A"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cal_list_date_start"
+        android:text="N/A"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cal_list_date_stop"
+        android:text="N/A"/>
+
+
 </LinearLayout>

@@ -84,27 +84,15 @@ public class CalendarActivity extends Activity
 
         adapter = new CalAdapter(getApplicationContext() , eventList,cal_view);
         cal_view.setAdapter(adapter);
-    final Button button_cal = (Button) findViewById(R.id.btn_calendar);
 
-    button_cal.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            button_cal.setEnabled(false);
-
-            getResultsFromApi();
-//            adapter.notifyDataSetChanged();
-            button_cal.setEnabled(true);
-        }
-    });
-
-    run = new Runnable() {
-        @Override
-        public void run() {
-            adapter.notifyDataSetChanged();
-            cal_view.invalidateViews();
-            cal_view.refreshDrawableState();
-        }
-    };
+        run = new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+                cal_view.invalidateViews();
+                cal_view.refreshDrawableState();
+            }
+        };
 
     // Initialize credentials and service object.
     mCredential = GoogleAccountCredential.usingOAuth2(
